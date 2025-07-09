@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ShoppingApp</string>
+    <string name="step_into_your_style_a_world_of_shoes">
+    Step into your<font color="#6033ba"> style \n A world of shoes</font>
+</string>
+    <string name="browse_the_latest_styles_from_top_brands_get_personalised_recommendations">Browse the latest styles from top brands\n Get personalised recommendations\n Enjoy fast free shipping</string>
+    <string name="let_s_get_started">Let\'s Get Started</string>
+    <string name="already_have_an_account_sign_in">Already have an account?<font color="#6033ba"> Sign in</font></string>
 </resources>
