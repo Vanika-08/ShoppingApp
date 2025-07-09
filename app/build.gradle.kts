@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    id ("kotlin-kapt")
 }
 
 android {
@@ -58,5 +59,7 @@ dependencies {
     implementation(libs.gson.v291)
     implementation(libs.dotsindicator)
     implementation(libs.androidx.activity.ktx)
+    kapt(libs.github.glide.compiler)
+
 
 }
