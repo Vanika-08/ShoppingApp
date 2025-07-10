@@ -3,11 +3,14 @@ package com.example.shoppingapp.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
+import com.example.shoppingapp.Adapter.BrandAdapter
 import com.example.shoppingapp.Model.SliderModel
-import com.example.shoppingapp.SliderAdapter
+import com.example.shoppingapp.Adapter.SliderAdapter
+import com.example.shoppingapp.Model.BrandModel
 import com.example.shoppingapp.ViewModel.MainViewModel
 import com.example.shoppingapp.databinding.ActivityMainBinding
 
@@ -21,6 +24,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         initBanner()
+
+        initBrand()
+
     }
 
         private fun initBanner(){
@@ -50,4 +56,16 @@ class MainActivity : AppCompatActivity() {
                 binding.dotindicator.attachTo(binding.viewpagerSlider)
             }
         }
+
+
+    private fun initBrand(){
+        binding.progressBarBrand.visibility= View.VISIBLE
+        viewModel.brands.observe(this) {brandList ->
+            binding.viewBrand.layoutManager=LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+            binding.viewBrand.adapter = BrandAdapter(this@MainActivity, brandList.toMutableList())
+            binding.progressBarBrand.visibility= View.GONE
+        }
+        viewModel.loadBrands()
+    }
+
 }
