@@ -7,7 +7,7 @@
     android:layout_height="215dp">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/pic"
         android:layout_width="164dp"
         android:layout_height="164dp"
         android:background="@drawable/grey_bg"
@@ -37,7 +37,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/pic" />
 
     <TextView
         android:id="@+id/ratingTxt"

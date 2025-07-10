@@ -3,14 +3,15 @@ package com.example.shoppingapp.activity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.example.shoppingapp.Adapter.BrandAdapter
+import com.example.shoppingapp.Adapter.PopularAdapter
 import com.example.shoppingapp.Model.SliderModel
 import com.example.shoppingapp.Adapter.SliderAdapter
-import com.example.shoppingapp.Model.BrandModel
 import com.example.shoppingapp.ViewModel.MainViewModel
 import com.example.shoppingapp.databinding.ActivityMainBinding
 
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         initBanner()
 
         initBrand()
+
+        initPopular()
 
     }
 
@@ -66,6 +69,16 @@ class MainActivity : AppCompatActivity() {
             binding.progressBarBrand.visibility= View.GONE
         }
         viewModel.loadBrands()
+    }
+
+    private fun initPopular(){
+        binding.progressBarPopular.visibility=View.VISIBLE
+        viewModel.populars.observe(this){popularList ->
+            binding.viewPopular.layoutManager= GridLayoutManager(this@MainActivity, 2)
+            binding.viewPopular.adapter=PopularAdapter(this@MainActivity, popularList.toMutableList())
+            binding.progressBarPopular.visibility=View.GONE
+        }
+        viewModel.loadPopulars()
     }
 
 }
