@@ -9,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.request.RequestOptions
 import com.example.shoppingapp.Model.ItemModel
+import com.example.shoppingapp.activity.DetailActivity
 import com.example.shoppingapp.databinding.ViewholderRecommendedBinding
 
 class PopularAdapter(private val context: Context, val items: MutableList<ItemModel>):RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
@@ -30,6 +31,12 @@ class PopularAdapter(private val context: Context, val items: MutableList<ItemMo
             .load(items[position].picUrl[0])
             .apply(requestOptions)
             .into(holder.binding.pic)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DetailActivity::class.java)
+            intent.putExtra("object", items[position])
+            holder.itemView.context.startActivity(intent)
+        }
 
     }
 
