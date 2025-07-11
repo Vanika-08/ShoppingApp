@@ -1,5 +1,6 @@
 package com.example.shoppingapp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -80,7 +81,9 @@ class DetailActivity : BaseActivity() {
             managmentCart.insertFood(item)
         }
         binding.backBtn.setOnClickListener { finish() }
-        binding.cartBtn.setOnClickListener {  }
+        binding.cartBtn.setOnClickListener {
+            startActivity(Intent(this@DetailActivity,  CartActivity::class.java))
+        }
 
     }
 }

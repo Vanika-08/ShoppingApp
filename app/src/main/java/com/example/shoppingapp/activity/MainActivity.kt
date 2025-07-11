@@ -1,5 +1,6 @@
 package com.example.shoppingapp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -30,9 +31,15 @@ class MainActivity : AppCompatActivity() {
 
         initPopular()
 
+        initBottemMenu()
+
     }
 
-        private fun initBanner(){
+    private fun initBottemMenu() {
+        binding.cartBtn.setOnClickListener { startActivity(Intent(this@MainActivity, CartActivity::class.java)) }
+    }
+
+    private fun initBanner(){
             binding.progressBarBanner.visibility= View.VISIBLE
             viewModel.banners.observe(this) { items ->
                 banners(items)
